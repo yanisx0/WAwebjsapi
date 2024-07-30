@@ -1,0 +1,14 @@
+services:
+- type: web
+    runtime: docker
+    name: webdis
+    repo: https://github.com/yanisx0/WAwebjsapi.git # Default: Repo containing render.yaml
+    scaling: # Autoscaling configuration
+        minInstances: 1
+        maxInstances: 3
+        targetMemoryPercent: 60 # Optional if targetCPUPercent is set
+        targetCPUPercent: 60    # Optional if targetMemory is set
+    healthCheckPath: /
+    registryCredential: # Default: No credential
+        fromRegistryCreds:
+        name: my-credentials
